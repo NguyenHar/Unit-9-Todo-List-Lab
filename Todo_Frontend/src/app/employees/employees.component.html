@@ -1,0 +1,17 @@
+
+<div *ngFor="let e of employees; let i = index">
+    <p>Name: {{e.name}}</p>
+    <p>Id: {{e.id}}</p>
+    <p>Title: {{e.title}}</p>
+    <p>Hours: {{e.hours}}</p>
+    <button (click)="deleteEmployee(e.id, i)">Terminate {{e.name}}</button>
+    <app-edit-employee [employee]="e" (changed)="updateEmployee($event, i)"></app-edit-employee>
+    <br/>
+</div>
+
+
+<p>Add New Employee</p>
+<p>Name: <input type="name" [(ngModel)]="newEmployee.name"/></p>
+<p>Title: <input type="string" [(ngModel)]="newEmployee.title"/></p>
+<p>Hours: <input type="number" min=0 max=40 [(ngModel)]="newEmployee.hours"/></p>
+<button (click)="createEmployee()">Add new employee</button>

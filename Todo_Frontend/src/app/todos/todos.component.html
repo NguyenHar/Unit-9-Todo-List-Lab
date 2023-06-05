@@ -1,0 +1,26 @@
+<div *ngFor="let t of todos; let i = index">
+    <p>Name: {{t.name}}</p>
+    <p>Description: {{t.description}}</p>
+    <p>Assigned To: {{getName(t.assignedTo)}}</p>
+    <p>Is completed: 
+        <span *ngIf="t.isCompleted">✔</span>
+        <span *ngIf="!t.isCompleted">✖ <button (click)="completeTask(t, i)">Complete</button></span>
+    </p>
+    <button (click)="deleteTodo(t.id, i)">Delete Todo</button>
+    <br/><br/>
+</div>
+
+
+
+<p>Create Task</p>
+<p>Name: <input type="string" [(ngModel)]="newTodo.name"/></p>
+<p>Description: <input type="string" [(ngModel)]="newTodo.description"/></p>
+<p>
+    Assigned to:
+    <select [ngModel]="newTodo.assignedTo">
+        <option *ngFor="let e of employees" name="employee_name">
+            {{e.name}}
+        </option>
+    </select>
+</p>
+<button (click)="createTodo()">Create Todo</button>

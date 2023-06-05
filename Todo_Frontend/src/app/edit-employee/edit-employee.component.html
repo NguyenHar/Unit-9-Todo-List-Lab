@@ -1,0 +1,7 @@
+<button *ngIf="!displayForm" (click)="toggleDisplay()">Edit Employee</button>
+<div *ngIf="displayForm">
+    <button (click)="editEmployee()">Finish Editing {{employee.name}}</button>
+    <p>Name: <input type="text" [(ngModel)]="employee.name"/></p>
+    <p>Title: <input type="text" [(ngModel)]="employee.title"/></p>
+    <p>Hours: <input type="number" [(ngModel)]="employee.hours"/></p>
+</div>
